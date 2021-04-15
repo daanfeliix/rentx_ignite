@@ -11,15 +11,11 @@ export default class AuthenticateUserController {
             AuthenticateUserService
         );
 
-        try {
-            const token = await authenticateUserService.execute({
-                email,
-                password,
-            });
+        const token = await authenticateUserService.execute({
+            email,
+            password,
+        });
 
-            return response.json(token);
-        } catch (err) {
-            return response.status(500).send(err.message);
-        }
+        return response.json(token);
     }
 }
